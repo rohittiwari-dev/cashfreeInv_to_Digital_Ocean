@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pdf Document</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;1,200&display=swap"
+    rel="stylesheet">
+  <style>
+    * {
+      font-family: 'Poppins', sans-serif !important;
+      padding: 0 !important;
+      margin: 0 !important;
+    }
+
+    .head-cn {
+      width: 100%;
+      background-color: #bdfdd5;
+      color: #053986;
+    }
+
+    .invoice-head {
+      width: 100%;
+      display: flex;
+      align-items: center;
+    }
+
+    .inv-info {
+      width: 100%;
+      background-color: #c1f7d5;
+      color: #053986;
+      text-align: center;
+      font-size: 1.2rem;
+    }
+
+    .inv-d-head {
+      text-align: center;
+      width: 100%;
+      font-size: 1.2rem;
+      background-color: #e1c3f5;
+      color: #053986;
+    }
+
+    .billtable {
+
+      color: #022342;
+      background-color: #afd2ff;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- <h4 class="w-100 bg-info text-center" style="text-transform:uppercase">Customer Invoice Copy</h4> -->
+  <p class="head-cn" style="font-weight:600;font-size:1.7rem;text-align:center; text-transform:uppercase;">
+    Niladvantage
+    Technologies Pvt
+    Ltd</p>
+  <br />
+  <table width="99%" cellspacing="0" cellpadding="0">
+    <tr>
+      <td width="'40%" align="right"><img height="130" width="150" src="	https://www.nirvanameet.com/icons/Icon-512.png"
+          alt=""></td>
+      <td width="'50%" align="right">
+        <p class="" style="line-height: 1.3rem;font-size:0.9rem;color: rgb(29, 89, 179);">
+          Advantage to our customers..always..<br>
+          # B109, CVK Meenakshi Elegance, MLA Lyt,<br>
+          Kalena Agharara, Banerghatta Road Bangalore — 560076, India<br>
+          Tel: +91 (80) 41725797<br>
+          Mob- +91-9449075797/ 8884950768<br>
+          Web: http://www.niladvantage.com<br>
+          CIN: U74999KA2019PTC128088<br>
+          GSTN-29AAGCN6901J1Z6
+        </p>
+      </td>
+    </tr>
+  </table>
+
+  <br />
+  <h4 class="inv-info">Tax Invoice</h4>
+  <br />
+  <!-- for sender -->
+  <table style="color: #022342;" width="99%" cellspacing="0" cellpadding="0">
+    <tr>
+      <td width="50%" align="left">
+        {{#each products.prodlist}}
+        <p style="color:#2d1193;font-size: 1.2rem; font-weight: 700;">Bill to:</p>
+        <p style="font-size: 1rem; font-weight: 700;"><b>{{this.userName}}</b></p>
+        <p style="font-size: 0.9rem; font-weight: 500;">Email: {{this.email}}</p>
+        <p style="font-size: 0.9rem; font-weight: 500;">Address: {{this.address}}</p>
+        <p style="font-size: 0.9rem; font-weight: 500;">Phone : {{this.number}}</p>
+        <p style="font-size: 0.9rem; font-weight: 500;">Company GSTIN : {{this.Gstin}}</p>
+        {{/each}}
+      </td>
+      <td width="50%" align="right">
+        {{#each products.prodlist}}
+        <P>Transaction ID : {{this.tid}}</P>
+        <p style="font-size: 0.9rem; font-weight: 700;color: #2d1193;">Invoice Date: {{this.date}}</p>
+        <p style="font-size: 0.9rem;font-weight: 700;color: #10677e;">INVOICE NO: DX-{{this.invoice}}</p>
+        {{/each}}
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        {{#each products.prodlist}}
+        <p style="font-size: 0.9rem; font-weight: 500;"> Company Name : {{this.company}}</p>
+        {{/each}}
+      </td>
+    </tr>
+  </table>
+  <br />
+  <h4 class="inv-d-head">Description of Purchase Order </h4>
+
+  <table class="" cellspacing="0" cellpadding="0">
+    <thead class="billtable">
+      <tr>
+        <th style=" height:2rem; border-top: 0.1rem solid rgb(167, 179, 190)" scope="col">Plan</th>
+        <th style=" height:2rem; border-top: 0.1rem solid rgb(167, 179, 190)" scope="col">Purchase Date</th>
+        <th style=" height:2rem; border-top: 0.1rem solid rgb(167, 179, 190)" scope="col">Expiry Date</th>
+        <th style=" height:2rem; border-top: 0.1rem solid rgb(167, 179, 190)" scope="col">Price</th>
+        <th style=" height:2rem; border-top: 0.1rem solid rgb(167, 179, 190)" scope="col">Total</th>
+      </tr>
+    </thead>
+    <tbody style="text-align: center;">
+      {{#each products.prodlist}}
+      <tr>
+        <td style=" height:2rem; border-top: 0.1rem solid rgb(167, 179, 190)" width=" 10%">{{this.plan}}</td>
+        <td style=" height:2rem;  border-top: 0.1rem solid rgb(167, 179, 190)" width="10%">{{this.purchaseDate}}</td>
+        <td style=" height:2rem;  border-top: 0.1rem solid rgb(167, 179, 190)" width="10%">{{this.expiryDate}}</td>
+        <td style=" height:2rem;  border-top: 0.1rem solid rgb(167, 179, 190)" width="10%">₹{{this.amountprice}}</td>
+        <td style=" height:2rem;  border-top: 0.1rem solid rgb(167, 179, 190)" width="10%">₹{{this.amountprice}}</td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+  <table width="100%" cellspacing="0" cellpadding="0">
+    <tr style=" height:2rem; background-color: #e7cdf8;">
+      <td style="font-weight: 600; border-top: 0.1rem solid rgb(167, 179, 190)" width="81%" align="right">
+        Sub Total : </td>
+      <td style=" border-top: 0.1rem solid rgb(167, 179, 190)" width="40%" align="center">
+        <h8>₹{{products.subtotal}}</h8>
+      </td>
+    </tr>
+    <tr style=" height:2rem; ">
+      <td style="font-weight: 600; border-top: 0.1rem solid rgb(167, 179, 190)" width="81%" align="right">
+        GST @ 18% Tax : </td>
+      <td style=" border-top: 0.1rem solid rgb(167, 179, 190)" width="40%" align="center">
+        <h8>₹{{products.tax}}</h8>
+      </td>
+    </tr>
+    <tr style=" height:2rem; " class="billtable">
+      <td style="font-weight: 600; border-top: 0.1rem solid rgb(167, 179, 190);" width="81%" align="right">
+        Grand Total : </td>
+      <td style=" border-top: 0.1rem solid rgb(167, 179, 190);" width="40%" align="center">
+        <h8>₹{{products.gtotal}}</h8>
+      </td>
+    </tr>
+  </table>
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td align="left" style="font-size: 25px;font-weight: 700;color:red; ">
+        Notice:</td>
+    </tr>
+    <tr>
+      <td align="left" style="font-size: 1.2rem;font-weight: 700;color:rgb(49, 49, 49);">A
+        finance charge of 1.5% will be made on unpaid balances after 30 days.</td>
+    </tr>
+  </table>
+</body>
+
+</html>
